@@ -61,7 +61,7 @@ RUN cd /opt && \
     rm ${ANDROID_SDK_FILENAME} && \
     echo y | android update sdk --no-ui -a --filter tools,platform-tools,${ANDROID_API_LEVELS},${ANDROID_BUILD_TOOLS_VERSION} && \
     echo y | android update sdk --no-ui --all --filter "${ANDROID_EXTRA_COMPONENTS}"
-
+RUN printf 'y\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny' | sdkmanager --licenses
 
 # ——————————
 # Installs Gradle
