@@ -46,18 +46,18 @@ RUN dpkg --add-architecture i386 && \
 # Installs Android SDK
 # ——————————
 
-ENV ANDROID_SDK_VERSION r24.4.1
+ENV ANDROID_SDK_VERSION 3859397
 ENV ANDROID_BUILD_TOOLS_VERSION build-tools-27.0.0,build-tools-26.0.2,build-tools-25.0.3,build-tools-25.0.2,build-tools-25.0.0,build-tools-23.0.2,build-tools-23.0.3,build-tools-23.0.1
 
-ENV ANDROID_SDK_FILENAME android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
-ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
+ENV ANDROID_SDK_FILENAME sdk-tools-linux-${ANDROID_SDK_VERSION}.zip
+ENV ANDROID_SDK_URL https://dl.google.com/android/repository/${ANDROID_SDK_FILENAME}
 ENV ANDROID_API_LEVELS android-27,android-26,android-25,android-23
 ENV ANDROID_EXTRA_COMPONENTS extra-android-m2repository,extra-google-m2repository
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools/bin
 RUN cd /opt && \
     wget -q ${ANDROID_SDK_URL} && \
-    tar -xzf ${ANDROID_SDK_FILENAME} && \
+    unzip ${ANDROID_SDK_FILENAME} -d ./android-sdk-linux && \
     rm ${ANDROID_SDK_FILENAME} && \
     echo y | android update sdk --no-ui -a --filter tools,platform-tools,${ANDROID_API_LEVELS},${ANDROID_BUILD_TOOLS_VERSION} && \
     echo y | android update sdk --no-ui --all --filter "${ANDROID_EXTRA_COMPONENTS}"
