@@ -55,10 +55,10 @@ RUN cd /opt && \
     wget -q ${ANDROID_SDK_URL} && \
     unzip ${ANDROID_SDK_FILENAME} -d ./android-sdk-linux && \
     rm ${ANDROID_SDK_FILENAME} && \
-    printf 'y\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny' | sdkmanager --licenses && \
+    printf 'y\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny' | sdkmanager --licenses && \
     sdkmanager "tools" "platform-tools"  && \
     sdkmanager "platforms;android-27" "platforms;android-26" "platforms;android-25" "platforms;android-23" && \
-    sdkmanager "build-tools;27.0.0" "build-tools;26.0.2" "build-tools;25.0.3" "build-tools;25.0.2" "build-tools;25.0.0" && \
+    sdkmanager "build-tools;27.0.3" "build-tools;27.0.0" "build-tools;26.0.2" "build-tools;25.0.3" "build-tools;25.0.2" "build-tools;25.0.0" && \
     sdkmanager "build-tools;23.0.2" "build-tools;23.0.3" "build-tools;23.0.1" && \
     sdkmanager "extras;android;m2repository" "extras;google;m2repository"
 
